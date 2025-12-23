@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './App.css'
 
 const skillGroups = [
@@ -159,7 +160,19 @@ const microservices = [
   'AccountingService',
 ]
 
+const tabs = [
+  { id: 'experience', label: 'Experience' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'services', label: 'Services' },
+  { id: 'leadership', label: 'Leadership' },
+  { id: 'accomplishments', label: 'Wins' },
+  { id: 'education', label: 'Education' },
+] as const
+
 function App() {
+  const [activeTab, setActiveTab] = useState<(typeof tabs)[number]['id']>('experience')
+
   return (
     <div className="app">
       <header className="hero">
@@ -207,137 +220,170 @@ function App() {
         </div>
       </header>
 
-      <section className="section">
-        <div className="section-heading">
-          <h2>Professional Experience</h2>
-          <p>Leadership roles across application delivery, architecture, and mentoring.</p>
-        </div>
-        <div className="experience-list">
-          {experiences.map((role) => (
-            <article key={role.title} className="experience-card">
-              <div className="experience-header">
-                <div>
-                  <h3>{role.title}</h3>
-                  <p>{role.company}</p>
-                </div>
-                <div className="experience-meta">
-                  <span>{role.period}</span>
-                  <span>{role.location}</span>
-                </div>
-              </div>
-              <ul>
-                {role.highlights.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </article>
+      <section className="tabbed-sections">
+        <div className="tab-bar" role="tablist" aria-label="Portfolio modules">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              type="button"
+              role="tab"
+              aria-selected={activeTab === tab.id}
+              className={`tab-button ${activeTab === tab.id ? 'active' : ''}`}
+              onClick={() => setActiveTab(tab.id)}
+            >
+              {tab.label}
+            </button>
           ))}
         </div>
-      </section>
 
-      <section className="section">
-        <div className="section-heading">
-          <h2>Technical Skills</h2>
-          <p>Hands-on expertise across full-stack development, architecture, and cloud tools.</p>
-        </div>
-        <div className="skill-grid">
-          {skillGroups.map((group) => (
-            <article key={group.title} className="skill-card">
-              <h3>{group.title}</h3>
+        <div className="tab-panel">
+          {activeTab === 'experience' && (
+            <section className="section">
+              <div className="section-heading">
+                <h2>Professional Experience</h2>
+                <p>Leadership roles across application delivery, architecture, and mentoring.</p>
+              </div>
+              <div className="experience-list">
+                {experiences.map((role) => (
+                  <article key={role.title} className="experience-card">
+                    <div className="experience-header">
+                      <div>
+                        <h3>{role.title}</h3>
+                        <p>{role.company}</p>
+                      </div>
+                      <div className="experience-meta">
+                        <span>{role.period}</span>
+                        <span>{role.location}</span>
+                      </div>
+                    </div>
+                    <ul>
+                      {role.highlights.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {activeTab === 'skills' && (
+            <section className="section">
+              <div className="section-heading">
+                <h2>Technical Skills</h2>
+                <p>Hands-on expertise across full-stack development, architecture, and cloud tools.</p>
+              </div>
+              <div className="skill-grid">
+                {skillGroups.map((group) => (
+                  <article key={group.title} className="skill-card">
+                    <h3>{group.title}</h3>
+                    <div className="pill-grid">
+                      {group.items.map((skill) => (
+                        <span key={skill} className="pill">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {activeTab === 'projects' && (
+            <section className="section">
+              <div className="section-heading">
+                <h2>Key Platforms Delivered</h2>
+                <p>Flagship products built for compliance, operations, and customer workflows.</p>
+              </div>
+              <div className="card-grid">
+                {projects.map((project) => (
+                  <article key={project.name} className="card">
+                    <div className="card-header">
+                      <h3>{project.name}</h3>
+                    </div>
+                    <p>{project.description}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {activeTab === 'services' && (
+            <section className="section dark-panel">
+              <div className="section-heading">
+                <h2>Microservices & Integrations</h2>
+                <p>Service portfolio supporting event-driven and integration-heavy workflows.</p>
+              </div>
+              <div className="dual-list">
+                <div>
+                  <h3>Microservices</h3>
+                  <ul>
+                    {microservices.map((service) => (
+                      <li key={service}>{service}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h3>Integrations</h3>
+                  <ul>
+                    <li>Stripe API for secure payment processing</li>
+                    <li>Zoho API for automated ticket creation and management</li>
+                    <li>SignNow API for electronic signature workflows</li>
+                    <li>NSwag Studio for API client and NuGet generation</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          )}
+
+          {activeTab === 'leadership' && (
+            <section className="section">
+              <div className="section-heading">
+                <h2>Leadership & Management Skills</h2>
+                <p>Core competencies that drive high-performing, cross-functional teams.</p>
+              </div>
               <div className="pill-grid">
-                {group.items.map((skill) => (
+                {leadershipSkills.map((skill) => (
                   <span key={skill} className="pill">
                     {skill}
                   </span>
                 ))}
               </div>
-            </article>
-          ))}
-        </div>
-      </section>
+            </section>
+          )}
 
-      <section className="section">
-        <div className="section-heading">
-          <h2>Key Platforms Delivered</h2>
-          <p>Flagship products built for compliance, operations, and customer workflows.</p>
-        </div>
-        <div className="card-grid">
-          {projects.map((project) => (
-            <article key={project.name} className="card">
-              <div className="card-header">
-                <h3>{project.name}</h3>
+          {activeTab === 'accomplishments' && (
+            <section className="section">
+              <div className="section-heading">
+                <h2>Accomplishments</h2>
+                <p>Recognition and achievements throughout the career journey.</p>
               </div>
-              <p>{project.description}</p>
-            </article>
-          ))}
-        </div>
-      </section>
+              <ul className="highlight-list">
+                {accomplishments.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </section>
+          )}
 
-      <section className="section dark-panel">
-        <div className="section-heading">
-          <h2>Microservices & Integrations</h2>
-          <p>Service portfolio supporting event-driven and integration-heavy workflows.</p>
-        </div>
-        <div className="dual-list">
-          <div>
-            <h3>Microservices</h3>
-            <ul>
-              {microservices.map((service) => (
-                <li key={service}>{service}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3>Integrations</h3>
-            <ul>
-              <li>Stripe API for secure payment processing</li>
-              <li>Zoho API for automated ticket creation and management</li>
-              <li>SignNow API for electronic signature workflows</li>
-              <li>NSwag Studio for API client and NuGet generation</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="section-heading">
-          <h2>Leadership & Management Skills</h2>
-          <p>Core competencies that drive high-performing, cross-functional teams.</p>
-        </div>
-        <div className="pill-grid">
-          {leadershipSkills.map((skill) => (
-            <span key={skill} className="pill">
-              {skill}
-            </span>
-          ))}
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="section-heading">
-          <h2>Accomplishments</h2>
-          <p>Recognition and achievements throughout the career journey.</p>
-        </div>
-        <ul className="highlight-list">
-          {accomplishments.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="section">
-        <div className="section-heading">
-          <h2>Education</h2>
-          <p>Academic milestones and professional training.</p>
-        </div>
-        <div className="education-grid">
-          {education.map((item) => (
-            <article key={item.program} className="education-card">
-              <h3>{item.program}</h3>
-              <p>{item.school}</p>
-              <span>{item.period}</span>
-            </article>
-          ))}
+          {activeTab === 'education' && (
+            <section className="section">
+              <div className="section-heading">
+                <h2>Education</h2>
+                <p>Academic milestones and professional training.</p>
+              </div>
+              <div className="education-grid">
+                {education.map((item) => (
+                  <article key={item.program} className="education-card">
+                    <h3>{item.program}</h3>
+                    <p>{item.school}</p>
+                    <span>{item.period}</span>
+                  </article>
+                ))}
+              </div>
+            </section>
+          )}
         </div>
       </section>
     </div>
