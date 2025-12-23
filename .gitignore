@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/PortFolio
+/.vs
+/PortFolio-React/.vs/PortFolio-React
