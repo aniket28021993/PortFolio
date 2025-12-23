@@ -60,15 +60,15 @@ function App() {
             with focus on modernization, automation, and customer-ready products.
           </p>
           <div className="hero-metrics">
-            <div>
+            <div className="hero-metric">
               <h3>12+</h3>
               <p>Enterprise apps supported</p>
             </div>
-            <div>
+            <div className="hero-metric">
               <h3>5-6</h3>
               <p>Notification microservices</p>
             </div>
-            <div>
+            <div className="hero-metric">
               <h3>Always</h3>
               <p>Compliance-first delivery</p>
             </div>
