@@ -1,66 +1,6 @@
-import { useState } from 'react'
 import './App.css'
 
-const skillGroups = [
-  {
-    title: 'Languages & Frameworks',
-    items: [
-      'DOTNET Core',
-      'ASP.NET',
-      'C#',
-      'Angular 17',
-      'ADO.NET',
-      'HTML5',
-      'CSS',
-      'Bootstrap 5',
-    ],
-  },
-  {
-    title: 'Architecture & Tools',
-    items: [
-      'Microservices',
-      'Web API',
-      'NSwag',
-      'Entity Framework',
-      'IIS Deployment',
-      'RabbitMQ',
-      'NBus',
-    ],
-  },
-  {
-    title: 'Cloud & Data',
-    items: ['Azure', 'Google Cloud Console', 'BigQuery', 'Cloud Buckets', 'Firebase'],
-  },
-  {
-    title: 'Other',
-    items: ['Stripe API', 'Zoho API', 'SignNow API', 'DevOps', 'Agile/Scrum'],
-  },
-]
-
-const projects = [
-  {
-    name: 'Safeguard',
-    description:
-      'In-house platform for trucks and trailers management, covering orders, client interviews, payments, scheduling, accounting, dashboards, and reporting.',
-  },
-  {
-    name: 'Navigate',
-    description:
-      'End-user portal for truck and trailer operations, driver interviews, drug-test scheduling, and secure Stripe-based payments.',
-  },
-  {
-    name: 'Vendor',
-    description:
-      'Supply order management platform with Google Maps integration for locating nearby medical providers.',
-  },
-  {
-    name: 'PermitBook',
-    description:
-      'Company management platform with role-based access, subscription handling, and document management for drivers, trucks, and trailers.',
-  },
-]
-
-const experiences = [
+const experience = [
   {
     title: 'Application Development Manager',
     company: 'ACV Solutions Pvt Ltd',
@@ -104,6 +44,69 @@ const experiences = [
   },
 ]
 
+const projects = [
+  {
+    name: 'Safeguard',
+    description:
+      'In-house platform for trucks and trailers management, covering orders, client interviews, payments, scheduling, accounting, dashboards, and reporting.',
+    tags: ['Microservices', 'Operations', 'Payments'],
+  },
+  {
+    name: 'Navigate',
+    description:
+      'End-user portal for truck and trailer operations, driver interviews, drug-test scheduling, and secure Stripe-based payments.',
+    tags: ['Customer Portal', 'Scheduling', 'Stripe'],
+  },
+  {
+    name: 'Vendor',
+    description:
+      'Supply order management platform with Google Maps integration for locating nearby medical providers.',
+    tags: ['Maps', 'Orders', 'Logistics'],
+  },
+  {
+    name: 'PermitBook',
+    description:
+      'Company management platform with role-based access, subscription handling, and document management for drivers, trucks, and trailers.',
+    tags: ['Subscriptions', 'Compliance', 'RBAC'],
+  },
+]
+
+const skillGroups = [
+  {
+    title: 'Languages & Frameworks',
+    items: [
+      'DOTNET Core',
+      'ASP.NET',
+      'C#',
+      'Angular 17',
+      'ADO.NET',
+      'HTML5',
+      'CSS',
+      'Bootstrap 5',
+    ],
+  },
+  {
+    title: 'Architecture & Tools',
+    items: [
+      'Microservices',
+      'Web API',
+      'NSwag',
+      'Entity Framework',
+      'IIS Deployment',
+      'RabbitMQ',
+      'NBus',
+    ],
+  },
+  {
+    title: 'Cloud & Data',
+    items: ['Azure', 'Google Cloud Console', 'BigQuery', 'Cloud Buckets', 'Firebase'],
+  },
+  {
+    title: 'Other',
+    items: ['Stripe API', 'Zoho API', 'SignNow API', 'DevOps', 'Agile/Scrum'],
+  },
+]
+
 const leadershipSkills = [
   'Team Leadership & Mentorship',
   'Strategic Planning & Execution',
@@ -115,13 +118,6 @@ const leadershipSkills = [
   'Risk Management & Problem Solving',
   'Cross-Functional Collaboration',
   'Innovation & Continuous Improvement',
-]
-
-const accomplishments = [
-  'Awarded Best Software Developer in first year.',
-  'Promoted to Team Lead within two years, managing a 4–5 member team.',
-  'Recognized as North Star and consistently received top annual ratings.',
-  'Participated in Microsoft-led technical training sessions.',
 ]
 
 const education = [
@@ -160,232 +156,258 @@ const microservices = [
   'AccountingService',
 ]
 
-const tabs = [
-  { id: 'experience', label: 'Experience' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'services', label: 'Services' },
-  { id: 'leadership', label: 'Leadership' },
-  { id: 'accomplishments', label: 'Wins' },
-  { id: 'education', label: 'Education' },
-] as const
-
 function App() {
-  const [activeTab, setActiveTab] = useState<(typeof tabs)[number]['id']>('experience')
-
   return (
-    <div className="app">
-      <header className="hero">
-        <div className="hero-content">
-          <p className="eyebrow">Portfolio</p>
-          <h1>Aniket Dalvi</h1>
-          <p className="role">Application Development Manager</p>
-          <p className="summary">
-            Accomplished application development leader with 10+ years of experience guiding
-            cross-functional teams, modernizing enterprise platforms, and aligning technology
-            execution with business goals.
-          </p>
-          <div className="hero-contact">
-            <div>
-              <span>Email</span>
-              <a href="mailto:dalvianiket2928@gmail.com">dalvianiket2928@gmail.com</a>
-            </div>
-            <div>
-              <span>Phone</span>
-              <a href="tel:+918850389492">+91 8850389492</a>
-            </div>
+    <div className="page">
+      <header className="site-header">
+        <div className="site-header-inner">
+          <div className="logo">Aniket Dalvi</div>
+          <nav className="nav">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#work">Work</a>
+            <a href="#skills">Skills</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+          </nav>
+          <div className="header-actions">
+            <a className="ghost-btn" href="tel:+918850389492">
+              Call
+            </a>
+            <a className="primary-btn" href="mailto:dalvianiket2928@gmail.com">
+              Let&apos;s talk
+            </a>
           </div>
-          <div className="hero-metrics">
-            <div className="hero-metric">
-              <h3>10+ Years</h3>
-              <p>Application delivery experience</p>
-            </div>
-            <div className="hero-metric">
-              <h3>4</h3>
-              <p>Developers led at ACV Solutions</p>
-            </div>
-            <div className="hero-metric">
-              <h3>4</h3>
-              <p>Major platforms delivered</p>
-            </div>
-          </div>
-        </div>
-        <div className="hero-card">
-          <h2>Focus Areas</h2>
-          <ul>
-            <li>Enterprise application migrations & modernization</li>
-            <li>Event-driven microservices with RabbitMQ and NBus</li>
-            <li>API integrations for payments, e-signatures, and ticketing</li>
-          </ul>
         </div>
       </header>
 
-      <section className="tabbed-sections">
-        <div className="tab-bar" role="tablist" aria-label="Portfolio modules">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              type="button"
-              role="tab"
-              aria-selected={activeTab === tab.id}
-              className={`tab-button ${activeTab === tab.id ? 'active' : ''}`}
-              onClick={() => setActiveTab(tab.id)}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
+      <main>
+        <section className="hero" id="about">
+          <div className="hero-main">
+            <p className="eyebrow">Portfolio</p>
+            <h1>Application Development Manager focused on modern .NET platforms.</h1>
+            <p className="summary">
+              Accomplished application development leader with 10+ years of experience guiding
+              cross-functional teams, modernizing enterprise platforms, and aligning technology
+              execution with business goals.
+            </p>
+            <div className="hero-actions">
+              <a className="primary-btn" href="mailto:dalvianiket2928@gmail.com">
+                Email me
+              </a>
+              <a className="ghost-btn" href="tel:+918850389492">
+                Call +91 8850389492
+              </a>
+            </div>
+            <div className="hero-metrics">
+              <div>
+                <h3>10+ Years</h3>
+                <p>Application delivery experience</p>
+              </div>
+              <div>
+                <h3>4</h3>
+                <p>Developers led at ACV Solutions</p>
+              </div>
+              <div>
+                <h3>4</h3>
+                <p>Major platforms delivered</p>
+              </div>
+            </div>
+          </div>
+          <aside className="hero-card">
+            <div>
+              <h2>Now</h2>
+              <p>
+                Leading enterprise platform modernization with event-driven microservices and
+                customer-facing portals across trucking, compliance, and payments.
+              </p>
+            </div>
+            <div className="hero-list">
+              <h3>Focus Areas</h3>
+              <ul>
+                <li>Enterprise application migrations & modernization</li>
+                <li>Event-driven microservices with RabbitMQ and NBus</li>
+                <li>API integrations for payments, e-signatures, and ticketing</li>
+              </ul>
+            </div>
+            <div className="hero-tags">
+              <span>.NET Core</span>
+              <span>Angular 17</span>
+              <span>Azure DevOps</span>
+              <span>Microservices</span>
+            </div>
+          </aside>
+        </section>
 
-        <div className="tab-panel">
-          {activeTab === 'experience' && (
-            <section className="section">
-              <div className="section-heading">
-                <h2>Professional Experience</h2>
-                <p>Leadership roles across application delivery, architecture, and mentoring.</p>
-              </div>
-              <div className="experience-list">
-                {experiences.map((role) => (
-                  <article key={role.title} className="experience-card">
-                    <div className="experience-header">
-                      <div>
-                        <h3>{role.title}</h3>
-                        <p>{role.company}</p>
-                      </div>
-                      <div className="experience-meta">
-                        <span>{role.period}</span>
-                        <span>{role.location}</span>
-                      </div>
-                    </div>
-                    <ul>
-                      {role.highlights.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </article>
-                ))}
-              </div>
-            </section>
-          )}
-
-          {activeTab === 'skills' && (
-            <section className="section">
-              <div className="section-heading">
-                <h2>Technical Skills</h2>
-                <p>Hands-on expertise across full-stack development, architecture, and cloud tools.</p>
-              </div>
-              <div className="skill-grid">
-                {skillGroups.map((group) => (
-                  <article key={group.title} className="skill-card">
-                    <h3>{group.title}</h3>
-                    <div className="pill-grid">
-                      {group.items.map((skill) => (
-                        <span key={skill} className="pill">
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </section>
-          )}
-
-          {activeTab === 'projects' && (
-            <section className="section">
-              <div className="section-heading">
-                <h2>Key Platforms Delivered</h2>
-                <p>Flagship products built for compliance, operations, and customer workflows.</p>
-              </div>
-              <div className="card-grid">
-                {projects.map((project) => (
-                  <article key={project.name} className="card">
-                    <div className="card-header">
-                      <h3>{project.name}</h3>
-                    </div>
-                    <p>{project.description}</p>
-                  </article>
-                ))}
-              </div>
-            </section>
-          )}
-
-          {activeTab === 'services' && (
-            <section className="section dark-panel">
-              <div className="section-heading">
-                <h2>Microservices & Integrations</h2>
-                <p>Service portfolio supporting event-driven and integration-heavy workflows.</p>
-              </div>
-              <div className="dual-list">
-                <div>
-                  <h3>Microservices</h3>
-                  <ul>
-                    {microservices.map((service) => (
-                      <li key={service}>{service}</li>
-                    ))}
-                  </ul>
+        <section className="section" id="experience">
+          <div className="section-header">
+            <div>
+              <p className="eyebrow">Experience</p>
+              <h2>Leadership across delivery, architecture, and mentoring.</h2>
+            </div>
+            <p className="section-lede">
+              Building teams and systems that keep mission-critical platforms running reliably.
+            </p>
+          </div>
+          <div className="timeline">
+            {experience.map((role) => (
+              <article key={role.title} className="timeline-card">
+                <div className="timeline-header">
+                  <div>
+                    <h3>{role.title}</h3>
+                    <p>
+                      {role.company} · {role.location}
+                    </p>
+                  </div>
+                  <span>{role.period}</span>
                 </div>
+                <ul>
+                  {role.highlights.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="section" id="work">
+          <div className="section-header">
+            <div>
+              <p className="eyebrow">Selected Work</p>
+              <h2>Platforms built for operations, compliance, and customer workflows.</h2>
+            </div>
+            <p className="section-lede">
+              End-to-end delivery from discovery to production, including integrations and
+              automation.
+            </p>
+          </div>
+          <div className="project-grid">
+            {projects.map((project) => (
+              <article key={project.name} className="project-card">
                 <div>
-                  <h3>Integrations</h3>
-                  <ul>
-                    <li>Stripe API for secure payment processing</li>
-                    <li>Zoho API for automated ticket creation and management</li>
-                    <li>SignNow API for electronic signature workflows</li>
-                    <li>NSwag Studio for API client and NuGet generation</li>
-                  </ul>
+                  <h3>{project.name}</h3>
+                  <p>{project.description}</p>
                 </div>
-              </div>
-            </section>
-          )}
+                <div className="tag-row">
+                  {project.tags.map((tag) => (
+                    <span key={tag}>{tag}</span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
 
-          {activeTab === 'leadership' && (
-            <section className="section">
-              <div className="section-heading">
-                <h2>Leadership & Management Skills</h2>
-                <p>Core competencies that drive high-performing, cross-functional teams.</p>
-              </div>
-              <div className="pill-grid">
-                {leadershipSkills.map((skill) => (
-                  <span key={skill} className="pill">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </section>
-          )}
+        <section className="section" id="skills">
+          <div className="section-header">
+            <div>
+              <p className="eyebrow">Skills</p>
+              <h2>Technical depth across product engineering and cloud delivery.</h2>
+            </div>
+            <p className="section-lede">
+              Hands-on expertise across the full stack, integrations, and operations tooling.
+            </p>
+          </div>
+          <div className="skill-grid">
+            {skillGroups.map((group) => (
+              <article key={group.title} className="skill-card">
+                <h3>{group.title}</h3>
+                <div className="pill-grid">
+                  {group.items.map((skill) => (
+                    <span key={skill} className="pill">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
 
-          {activeTab === 'accomplishments' && (
-            <section className="section">
-              <div className="section-heading">
-                <h2>Accomplishments</h2>
-                <p>Recognition and achievements throughout the career journey.</p>
-              </div>
-              <ul className="highlight-list">
-                {accomplishments.map((item) => (
-                  <li key={item}>{item}</li>
+        <section className="section" aria-labelledby="services-title">
+          <div className="section-header">
+            <div>
+              <p className="eyebrow">Services</p>
+              <h2 id="services-title">Microservices & integrations portfolio.</h2>
+            </div>
+            <p className="section-lede">
+              Supporting event-driven and integration-heavy workflows for enterprise platforms.
+            </p>
+          </div>
+          <div className="split-panel">
+            <div>
+              <h3>Microservices</h3>
+              <ul>
+                {microservices.map((service) => (
+                  <li key={service}>{service}</li>
                 ))}
               </ul>
-            </section>
-          )}
+            </div>
+            <div>
+              <h3>Integrations</h3>
+              <ul>
+                <li>Stripe API for secure payment processing</li>
+                <li>Zoho API for automated ticket creation and management</li>
+                <li>SignNow API for electronic signature workflows</li>
+                <li>NSwag Studio for API client and NuGet generation</li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
-          {activeTab === 'education' && (
-            <section className="section">
-              <div className="section-heading">
-                <h2>Education</h2>
-                <p>Academic milestones and professional training.</p>
-              </div>
-              <div className="education-grid">
-                {education.map((item) => (
-                  <article key={item.program} className="education-card">
-                    <h3>{item.program}</h3>
-                    <p>{item.school}</p>
-                    <span>{item.period}</span>
-                  </article>
-                ))}
-              </div>
-            </section>
-          )}
+        <section className="section" aria-labelledby="leadership-title">
+          <div className="section-header">
+            <div>
+              <p className="eyebrow">Leadership</p>
+              <h2 id="leadership-title">Managing high-performing teams.</h2>
+            </div>
+            <p className="section-lede">
+              Core competencies that drive cross-functional execution and delivery quality.
+            </p>
+          </div>
+          <div className="pill-grid">
+            {leadershipSkills.map((skill) => (
+              <span key={skill} className="pill">
+                {skill}
+              </span>
+            ))}
+          </div>
+        </section>
+
+        <section className="section" id="education">
+          <div className="section-header">
+            <div>
+              <p className="eyebrow">Education</p>
+              <h2>Academic milestones and training.</h2>
+            </div>
+            <p className="section-lede">Formal education that supports delivery leadership.</p>
+          </div>
+          <div className="education-grid">
+            {education.map((item) => (
+              <article key={item.program} className="education-card">
+                <h3>{item.program}</h3>
+                <p>{item.school}</p>
+                <span>{item.period}</span>
+              </article>
+            ))}
+          </div>
+        </section>
+      </main>
+
+      <footer className="footer" id="contact">
+        <div>
+          <h2>Let&apos;s build the next platform.</h2>
+          <p>
+            Available for leadership roles, architecture consulting, and modernization roadmaps.
+          </p>
         </div>
-      </section>
+        <div className="footer-links">
+          <a href="mailto:dalvianiket2928@gmail.com">dalvianiket2928@gmail.com</a>
+          <a href="tel:+918850389492">+91 8850389492</a>
+          <span>Miraroad, MH · India</span>
+        </div>
+      </footer>
     </div>
   )
 }
